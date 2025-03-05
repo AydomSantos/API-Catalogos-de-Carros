@@ -142,11 +142,4 @@ Implementar testes automatizados<br>
 Adicionar documentação Swagger<br>
 Implementar sistema de refresh token<br>
 Adicionar validação de dados avançada</p>
-<p class="has-line-data" data-line-start="163" data-line-end="165">📄 Licença<br>
-Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.</p>
-<p class="has-line-data" data-line-start="166" data-line-end="170">👥 Autores<br>
-Desenvolvedor Principal - Seu Nome<br>
-📞 Suporte<br>
-Para suporte, envie um email para <a href="mailto:seu@email.com">seu@email.com</a> ou abra uma issue no repositório.</p>
-<p class="has-line-data" data-line-start="171" data-line-end="173">plaintext<br>
-As adições incluem:- Seção de desenvolvimento- Boas práticas- Melhorias futuras planejadas- Informações sobre autores- Seção de suporte- Requisitos para contribuição</p>
+
