@@ -52,6 +52,14 @@ def create_app():
     app.register_blueprint(auth_bp)
     app.register_blueprint(vehicles_bp)
     
+    @app.route('/')
+    def home():
+        return jsonify({
+            'message': 'API de Catálogo de Veículos',
+            'status': 'online',
+            'version': '1.0'
+        }), 200
+    
     return app
 
 
