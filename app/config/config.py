@@ -4,7 +4,6 @@ from datetime import timedelta
 basedir = os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
 class Config:
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-    JWT_SECRET_KEY = os.environ.get('JWT_SECRET') or 'super-secret-key'
+    MONGO_URI = 'mongodb+srv://root:root@catalogcarros.8eqf6.mongodb.net/vehicles_db'
+    JWT_SECRET_KEY = 'your-secret-key'
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=1)

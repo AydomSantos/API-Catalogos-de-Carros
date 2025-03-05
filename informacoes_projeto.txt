@@ -1,0 +1,150 @@
+CATÁLOGO DE VEÍCULOS API - INFORMAÇÕES DO PROJETO
+
+1. VISÃO GERAL
+==============
+Nome: API de Catálogo de Veículos
+Tipo: API REST
+Framework: Flask
+Banco de Dados: MongoDB (migrado do SQLite)
+
+2. MUDANÇAS DE IMPLEMENTAÇÃO
+===========================
+* Migração do Banco de Dados:
+  - De: SQLite com SQLAlchemy
+  - Para: MongoDB com Flask-PyMongo
+  - Conexão: MongoDB Atlas
+
+* Componentes Principais Modificados:
+  - Sistema de autenticação
+  - Gerenciamento de veículos
+  - Conexões com banco de dados
+  - Configurações do sistema
+
+3. CONFIGURAÇÃO
+==============
+Variáveis de Ambiente:
+- JWT_SECRET_KEY
+- MONGO_URI
+
+Dependências:
+- Flask
+- Flask-PyMongo
+- Flask-JWT-Extended
+- Python-dotenv
+
+4. ENDPOINTS DA API
+=================
+Autenticação:
+POST /login - Autenticação de usuário
+
+Veículos:
+GET /vehicles - Lista todos os veículos
+GET /vehicles/<id> - Obtém veículo específico
+POST /admin/vehicles - Cria veículo (requer autenticação)
+PUT /admin/vehicles/<id> - Atualiza veículo (requer autenticação)
+DELETE /admin/vehicles/<id> - Remove veículo (requer autenticação)
+
+5. ESTRUTURA DE DADOS
+====================
+Formato do Documento de Veículo:
+{
+    "nome": "Nome do Veículo",
+    "marca": "Marca",
+    "modelo": "Modelo",
+    "foto": "url_da_foto",
+    "valor": 000000.00,
+    "created_at": "data_criacao"
+}
+
+6. NOTAS TÉCNICAS
+================
+* Autenticação: Baseada em JWT
+* Banco de Dados: MongoDB Atlas na nuvem
+* Segurança: Implementação de hash de senha
+* Proteção da API: Rotas protegidas com JWT
+* Formato de Dados: JSON para todos os endpoints
+
+7. CONFIGURAÇÃO DE DESENVOLVIMENTO
+================================
+1. Instalar dependências
+2. Configurar variáveis de ambiente
+3. Inicializar conexão com MongoDB
+4. Executar aplicação (python run.py)
+5. Acessar API em http://localhost:5000
+
+8. TESTES
+=========
+Ferramentas:
+- Postman
+- cURL
+- Navegador web para requisições GET
+
+Necessário para testes:
+1. Token JWT válido
+2. Credenciais de administrador
+3. Headers de requisição adequados
+4. Payloads JSON válidos
+
+9. OBSERVAÇÕES IMPORTANTES
+=========================
+* Sistema migrado com sucesso do SQLite para MongoDB
+* Melhor escalabilidade com banco de dados na nuvem
+* Autenticação segura implementada
+* API documentada e pronta para uso
+* Suporte a operações CRUD completas
+
+10. RELATÓRIO DE ERROS E SOLUÇÕES
+================================
+
+ERRO 1: Falha na Conexão MongoDB
+-------------------------------
+Problema: API não conseguia conectar ao banco de dados
+Sintomas: 
+- Erro 500 nas requisições
+- Mensagem "Database connection not established"
+Solução:
+1. Corrigir string de conexão no .env
+2. Adicionar nome do banco (vehicles_db) na URI
+3. Implementar verificação de conexão adequada
+
+ERRO 2: Autenticação JWT
+----------------------
+Problema: Token JWT não funcionava corretamente
+Sintomas:
+- Erro 401 (Unauthorized)
+- Erro 422 (Unprocessable Entity)
+Solução:
+1. Configurar JWT corretamente no __init__.py
+2. Usar Bearer token no header
+3. Formato correto: Authorization: Bearer <token>
+
+ERRO 3: Criação de Veículos
+-------------------------
+Problema: Falha ao criar novos veículos
+Sintomas:
+- Erro 500 ao tentar POST
+- Dados não salvos no banco
+Solução:
+1. Validar campos obrigatórios
+2. Verificar conexão com banco antes de inserir
+3. Tratar erros específicos do MongoDB
+
+DICAS IMPORTANTES:
+----------------
+1. Sempre verificar headers nas requisições:
+   - Content-Type: application/json
+   - Authorization: Bearer <token>
+
+2. Formato correto do JSON para veículos:
+   {
+       "nome": "Nome do Carro",
+       "marca": "Marca",
+       "modelo": "Modelo",
+       "foto": "URL",
+       "valor": 50000.00
+   }
+
+3. Sequência de teste recomendada:
+   a) Fazer login para obter token
+   b) Usar token nas requisições protegidas
+   c) Verificar resposta do servidor
