@@ -1,184 +1,179 @@
+# 🚗 API de Catálogo de Veículos
 
-Apply
-# 🚗 API de Catálogo de VeículosAPI REST para gerenciamento de catálogo de veículos, desenvolvida com Flask e MongoDB Atlas.## 📋 Índice- [Tecnologias](#-tecnologias)- [Estrutura do Projeto](#-estrutura-do-projeto)- [Instalação](#-instalação)- [Configuração](#-configuração)- [Uso](#-uso)- [Endpoints](#-endpoints)- [Testes](#-testes)- [Solução de Problemas](#-solução-de-problemas)## 🚀 Tecnologias- Python 3.x- Flask- Flask-PyMongo- Flask-JWT-Extended- MongoDB Atlas- Python-dotenv## 📁 Estrutura do Projeto
-api-catalogos-de-carros/ ├── app/ │ ├── init.py │ ├── extensions.py │ ├── routes/ │ │ ├── auth.py │ │ └── vehicles.py ├── .env ├── .gitignore ├── requirements.txt └── run.py
+API REST para gerenciamento de catálogo de veículos, desenvolvida com Flask e MongoDB Atlas.
 
-plaintext
+## 📋 Índice
+- [Tecnologias](#-tecnologias)
+- [Estrutura do Projeto](#-estrutura-do-projeto)
+- [Instalação](#-instalação)
+- [Configuração](#-configuração)
+- [Uso](#-uso)
+- [Endpoints](#-endpoints)
+- [Testes](#-testes)
+- [Solução de Problemas](#-solução-de-problemas)
+- [Licença](#-licença)
 
-## 🔧 Instalação1. Clone o repositório:```bashgit clone https://github.com/seu-usuario/api-catalogos-de-carros.gitcd api-catalogos-de-carros
-Crie e ative o ambiente virtual:
-bash
-Run
-python -m venv venvvenv\Scripts\activate
-Instale as dependências:
-bash
-Run
-pip install -r requirements.txt
-⚙️ Configuração
-Crie um arquivo .env:
-env
+## 🚀 Tecnologias
+- Python 3.x
+- Flask
+- Flask-PyMongo
+- Flask-JWT-Extended
+- MongoDB Atlas
+- Python-dotenv
 
-MONGO_URI=sua_uri_do_mongodb_atlasJWT_SECRET_KEY=sua_chave_jwt_secreta
-Configure o MongoDB Atlas:
-Crie uma conta no MongoDB Atlas
-Configure um novo cluster
-Obtenha a URI de conexão
-Adicione a URI no arquivo .env
-🏃‍♂️ Uso
-Execute a aplicação:
-bash
-Run
-python run.py
-Acesse a API em http://localhost:5000
-🛣️ Endpoints
-Autenticação
-POST /login - Login do usuário
-json
+## 📁 Estrutura do Projeto
+api-catalogos-de-carros/
+├── app/
+│ ├── init.py
+│ ├── extensions.py
+│ └── routes/
+│ ├── auth.py
+│ └── vehicles.py
+├── .env
+├── .gitignore
+├── requirements.txt
+└── run.py
 
-{  "username": "admin",  "password": "sua_senha"}
-Veículos
-GET /vehicles - Lista todos os veículos
-GET /vehicles/<id> - Obtém um veículo específico
-POST /admin/vehicles - Cria novo veículo (requer auth)
-PUT /admin/vehicles/<id> - Atualiza veículo (requer auth)
-DELETE /admin/vehicles/<id> - Remove veículo (requer auth)
-Exemplo de Veículo
-json
-
-{    "nome": "Civic",    "marca": "Honda",    "modelo": "EXL",    "foto": "url_da_foto",    "valor": 150000.00}
-🧪 Testes
-Usando Insomnia:
-Login (obter token):
-Método: POST
-URL: http://localhost:5000/login
-Headers: Content-Type: application/json
-Body:
-json
-
-{    "username": "admin",    "password": "sua_senha"}
-Criar veículo:
-Método: POST
-URL: http://localhost:5000/admin/vehicles
-Headers:
-Content-Type: application/json
-Authorization: Bearer seu_token_jwt
-Body:
-json
-
-{    "nome": "Civic",    "marca": "Honda",    "modelo": "EXL",    "foto": "url_da_foto",    "valor": 150000.00}
-🔧 Solução de Problemas
-Erros Comuns:
-Erro de Conexão MongoDB:
-Verifique a URI do MongoDB no arquivo .env
-Confirme se o IP está liberado no MongoDB Atlas
-Verifique as credenciais de acesso
-Erro de Autenticação (401/422):
-Certifique-se de incluir o token JWT
-Use o prefixo "Bearer" no token
-Verifique se o token não está expirado
-Erro ao Criar Veículo:
-Verifique se todos os campos obrigatórios estão presentes
-Confirme o formato correto do JSON
-Verifique a conexão com o banco de dados
-📄 Licença
-Este projeto está sob a licença MIT.
-
-plaintext
-
-The key updates include:- Removed SQLite references- Added MongoDB Atlas specific configuration- Updated installation and setup instructions- Added troubleshooting section- Updated project structure- Added detailed testing instructions for InsomniaWould you like me to explain any specific section in more detail?
-AydomSantos
 Copy
-Delete
-faça o readm com essas informações 
-Trae AI
-Used 1 Reference
-README.md
-I'll create a new README with the current project information:
 
-README.md
-Apply
-# 🚗 API de Catálogo de VeículosAPI REST para gerenciamento de catálogo de veículos, desenvolvida com Flask e MongoDB Atlas.## 📋 Índice- [Tecnologias](#-tecnologias)- [Estrutura do Projeto](#-estrutura-do-projeto)- [Instalação](#-instalação)- [Configuração](#-configuração)- [Uso](#-uso)- [Endpoints](#-endpoints)- [Testes](#-testes)- [Solução de Problemas](#-solução-de-problemas)## 🚀 Tecnologias- Python 3.x- Flask- Flask-PyMongo- Flask-JWT-Extended- MongoDB Atlas- Python-dotenv## 📁 Estrutura do Projeto
-api-catalogos-de-carros/ ├── app/ │ ├── init.py │ ├── extensions.py │ ├── routes/ │ │ ├── auth.py │ │ └── vehicles.py ├── .env ├── .gitignore ├── requirements.txt └── run.py
-
-plaintext
-
-## 🔧 Instalação1. Clone o repositório:```bashgit clone https://github.com/seu-usuario/api-catalogos-de-carros.gitcd api-catalogos-de-carros
+## 🔧 Instalação
+1. Clone o repositório:
+```bash
+git clone https://github.com/seu-usuario/api-catalogos-de-carros.git
+cd api-catalogos-de-carros
 Crie e ative o ambiente virtual:
+
 bash
-Run
-python -m venv venvvenv\Scripts\activate
+Copy
+python -m venv venv
+# Windows
+venv\Scripts\activate
+# Linux/MacOS
+source venv/bin/activate
 Instale as dependências:
+
 bash
-Run
+Copy
 pip install -r requirements.txt
 ⚙️ Configuração
-Configure o arquivo .env:
-env
+Crie um arquivo .env na raiz do projeto com:
 
-MONGO_URI=mongodb+srv://seu_usuario:sua_senha@seu_cluster.mongodb.net/JWT_SECRET_KEY=sua_chave_jwt_secreta
-Configure o MongoDB Atlas:
+env
+Copy
+MONGO_URI=sua_uri_mongodb_atlas
+JWT_SECRET_KEY=sua_chave_secreta_jwt
+Configuração do MongoDB Atlas:
+
 Crie uma conta no MongoDB Atlas
+
 Configure um novo cluster
-Obtenha a URI de conexão
-Adicione a URI no arquivo .env
+
+Adicione seu IP à lista de permissões
+
+Crie um usuário com permissões de leitura/escrita
+
+Obtenha a URI de conexão no formato:
+mongodb+srv://<usuario>:<senha>@cluster.mongodb.net/<database>
+
 🏃‍♂️ Uso
-Execute a aplicação:
+Inicie o servidor:
+
 bash
-Run
+Copy
 python run.py
-Acesse a API em http://localhost:5000
+A API estará disponível em: http://localhost:5000
+
 🛣️ Endpoints
 Autenticação
-POST /login - Login do usuário
-json
+POST /login - Gera token JWT
 
-{  "username": "admin",  "password": "sua_senha"}
+json
+Copy
+{
+  "username": "admin",
+  "password": "sua_senha"
+}
 Veículos
-GET /vehicles - Lista todos os veículos
-GET /vehicles/<id> - Obtém um veículo específico
-POST /admin/vehicles - Cria novo veículo (requer auth)
-PUT /admin/vehicles/<id> - Atualiza veículo (requer auth)
-DELETE /admin/vehicles/<id> - Remove veículo (requer auth)
-Exemplo de Veículo
-json
+Método	Endpoint	Descrição	Autenticação
+GET	/vehicles	Lista todos os veículos	Não
+GET	/vehicles/<id>	Obtém um veículo específico	Não
+POST	/admin/vehicles	Cria novo veículo	Sim
+PUT	/admin/vehicles/<id>	Atualiza veículo	Sim
+DELETE	/admin/vehicles/<id>	Remove veículo	Sim
+Exemplo de corpo (POST/PUT):
 
-{    "nome": "Civic",    "marca": "Honda",    "modelo": "EXL",    "foto": "url_da_foto",    "valor": 150000.00}
-🧪 Testes com Insomnia
-Login (obter token):
+json
+Copy
+{
+    "nome": "Civic",
+    "marca": "Honda",
+    "modelo": "EXL",
+    "foto": "http://exemplo.com/foto.jpg",
+    "valor": 150000.00
+}
+🧪 Testes
+Login (Obter Token)
+Requisição:
+
 Método: POST
+
 URL: http://localhost:5000/login
+
 Headers: Content-Type: application/json
-Body:
-json
 
-{    "username": "admin",    "password": "sua_senha"}
-Criar veículo:
+Body:
+
+json
+Copy
+{
+    "username": "admin",
+    "password": "sua_senha"
+}
+Criar Veículo
+Requisição:
+
 Método: POST
+
 URL: http://localhost:5000/admin/vehicles
+
 Headers:
+
+Copy
 Content-Type: application/json
-Authorization: Bearer seu_token_jwt
+Authorization: Bearer <seu_token_jwt>
 Body:
+
 json
-
-{    "nome": "Civic",    "marca": "Honda",    "modelo": "EXL",    "foto": "url_da_foto",    "valor": 150000.00}
+Copy
+{
+    "nome": "Civic",
+    "marca": "Honda",
+    "modelo": "EXL",
+    "foto": "http://exemplo.com/foto.jpg",
+    "valor": 150000.00
+}
 🔧 Solução de Problemas
-Erros Comuns:
-Erro de Conexão MongoDB (500):
-Verifique a URI do MongoDB no arquivo .env
-Confirme se o IP está liberado no MongoDB Atlas
-Verifique as credenciais de acesso
-Erro de Autenticação (401/422):
-Certifique-se de incluir o token JWT
-Use o prefixo "Bearer" no token
-Verifique se o token não está expirado
-Erro ao Criar Veículo (400):
-Verifique se todos os campos obrigatórios estão presentes
-Confirme o formato correto do JSON
-Verifique a conexão com o banco de dados
-📄 Licença
-Este projeto está sob a licença MIT.
+Erros Comuns
+Erro 500 - Conexão com MongoDB
 
-plaintext
+Verifique a URI no .env
 
-The key updates include:- Removed SQLite references- Updated technology stack- Added MongoDB Atlas configuration- Simplified installation steps- Added detailed testing instructions for Insomnia- Added troubleshooting section- Updated project structure
+Confirme acesso pelo IP no MongoDB Atlas
+
+Teste a conexão usando ferramentas como MongoDB Compass
+
+Erro 401/403 - Autenticação
+
+Verifique o prefixo Bearer no header Authorization
+
+Confira a validade do token JWT
+
+Valide a chave secreta JWT no .env
+
+Erro 400 - Requisição Inválida
+
+Verifique o formato JSON do corpo
+
+Confira campos obrigatórios:
+
+nome, marca, modelo, valor
