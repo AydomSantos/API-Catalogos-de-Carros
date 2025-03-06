@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask_jwt_extended import JWTManager
 from app.extensions import mongo
 from app.routes.auth import auth_bp
@@ -6,7 +6,7 @@ from app.routes.vehicles import vehicles_bp
 import os
 from dotenv import load_dotenv
 from datetime import timedelta
-from pymongo.errors import ConfigurationError, PyMongoError  # Changed import
+from pymongo.errors import ConfigurationError, PyMongoError
 
 def create_app():
     app = Flask(__name__)
@@ -53,12 +53,16 @@ def create_app():
     app.register_blueprint(vehicles_bp)
     
     @app.route('/')
-    def home():
-        return jsonify({
+    def index():
+        return {
             'message': 'API de Catálogo de Veículos',
             'status': 'online',
-            'version': '1.0'
-        }), 200
+            'version': '1.0',
+            'endpoints': {
+                'auth': '/login',
+                'vehicles': '/vehicles'
+            }
+        }
     
     return app
 
