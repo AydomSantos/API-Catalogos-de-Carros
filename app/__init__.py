@@ -1,5 +1,6 @@
 from flask import Flask, jsonify
 from flask_jwt_extended import JWTManager
+from flask_cors import CORS
 from app.extensions import mongo
 from app.routes.auth import auth_bp
 from app.routes.vehicles import vehicles_bp
@@ -10,6 +11,9 @@ from pymongo.errors import ConfigurationError, PyMongoError
 
 def create_app():
     app = Flask(__name__)
+    
+    # Configurar CORS
+    CORS(app, resources={r"/*": {"origins": "*"}})
     
     # Load environment variables
     load_dotenv()

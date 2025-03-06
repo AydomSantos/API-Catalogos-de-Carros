@@ -3,7 +3,7 @@ This is the main file that will run the application.
 """
 
 from dotenv import load_dotenv
-load_dotenv()  # Load environment variables before importing app
+load_dotenv()  
 
 from app import create_app
 
