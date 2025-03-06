@@ -10,20 +10,18 @@ vehicles_bp = Blueprint('vehicles', __name__)
 @vehicles_bp.route('/vehicles', methods=['GET'])
 def get_vehicles():
     try:
-        # Check if MongoDB connection is established
-        if not mongo.db:
-            return jsonify({'error': 'Database connection not established'}), 500
+        # Check MongoDB connection
+        try:
+            mongo.cx.server_info()
+            vehicles = list(mongo.db.vehicles.find())
+            for vehicle in vehicles:
+                vehicle['_id'] = str(vehicle['_id'])
+            return jsonify(vehicles), 200  # Fixed: return vehicles list instead of vehicle
             
-        vehicles = list(mongo.db.vehicles.find().sort('valor', 1))
-        return jsonify([{
-            'id': str(v['_id']),
-            'nome': v['nome'],
-            'marca': v['marca'],
-            'modelo': v['modelo'],
-            'foto': v['foto'],
-            'valor': v['valor'],
-            'created_at': v['created_at']
-        } for v in vehicles]), 200
+        except Exception as e:
+            current_app.logger.error(f"Database connection error: {str(e)}")
+            return jsonify({'error': 'Database connection not established'}), 500
+
     except Exception as e:
         current_app.logger.error(f"Database error: {str(e)}")
         return jsonify({'error': 'Error accessing database'}), 500
