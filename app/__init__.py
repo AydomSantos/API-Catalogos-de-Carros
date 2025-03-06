@@ -8,12 +8,20 @@ import os
 from dotenv import load_dotenv
 from datetime import timedelta
 from pymongo.errors import ConfigurationError, PyMongoError
+from flask_cors import CORS
 
 def create_app():
     app = Flask(__name__)
     
-    # Configurar CORS
-    CORS(app, resources={r"/*": {"origins": "*"}})
+    # Update CORS configuration
+    CORS(app, resources={
+        r"/*": {
+            "origins": ["http://127.0.0.1:5500", "http://localhost:5500"],
+            "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+            "allow_headers": ["Content-Type", "Authorization"],
+            "supports_credentials": True
+        }
+    })
     
     # Load environment variables
     load_dotenv()

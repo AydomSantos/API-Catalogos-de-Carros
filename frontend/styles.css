@@ -1,0 +1,21 @@
+.card-vehicle {
+    transition: transform 0.2s;
+}
+
+.card-vehicle:hover {
+    transform: scale(1.02);
+}
+
+.vehicle-image {
+    height: 200px;
+    object-fit: cover;
+}
+
+.btn-group {
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.btn-group:hover {
+    opacity: 1;
+}
